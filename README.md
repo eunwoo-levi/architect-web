@@ -1,5 +1,4 @@
 # 건축사 포트폴리오 웹사이트
-
 [웹사이트 링크](https://www.daegu-jinsung.com/)
 
 ## 기술 스택
@@ -7,7 +6,7 @@
 - **프레임워크**: Next.js
 - **CSS**: Tailwind CSS
 - **상태 관리**: Zustand
-- **API 연동**: Naver Maps API, Nodemailer
+- **API 연동**: Naver Maps API
 
 ## 기술 선택 이유
 
