@@ -25,7 +25,7 @@ export default function NavToggle() {
       <div
         className={`${
           isToggleOpen ? "flex" : "hidden"
-        } min-w-[200px] md:min-w-0 p-4 md:p-0 gap-4 md:gap-6 md:flex flex-col md:flex-row items-start md:items-center absolute md:relative right-0 top-10 md:top-0 bg-white md:bg-transparent  shadow-md md:shadow-none `}
+        } min-w-[200px] md:min-w-0 p-4 md:p-0 gap-4 md:gap-6 md:flex flex-col md:flex-row items-start md:items-center absolute md:relative right-0 top-10 md:top-0 bg-white md:bg-transparent shadow-md md:shadow-none z-50`}
       >
         <Link href="/about" className={linkClassName} onClick={toggleMenu}>
           회사소개
