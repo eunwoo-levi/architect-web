@@ -18,6 +18,9 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "진성 건축사 사무소",
   description: "진성 건축사 사무소 (jinseong architect office)",
+  other: {
+    "naver-site-verification": "b8f74214ea0d19776b22e18ef5c5fa36262302ba",
+  },
 };
 
 export default function RootLayout({
