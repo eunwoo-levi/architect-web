@@ -3,6 +3,9 @@ import { LuBuilding2 } from "react-icons/lu";
 import { CiPen } from "react-icons/ci";
 import { MdOutlineWork } from "react-icons/md";
 import { IconType } from "react-icons";
+import { BsBuildingCheck } from "react-icons/bs";
+import { MdFactCheck } from "react-icons/md";
+import { FaHelmetSafety } from "react-icons/fa6";
 
 interface SectionTitleProps {
   children: React.ReactNode;
@@ -96,7 +99,22 @@ const Page: React.FC = () => {
             <FeatureCard
               icon={MdOutlineWork}
               title="건축 감리"
-              description="설계의 완벽한 구현을 위한 전문적인 감리 서비스"
+              description="설계의 완벽한 구현을 위한 전문적인 감리 서비스 - 현장 감리 / 공사 감리"
+            />
+            <FeatureCard
+              icon={MdFactCheck}
+              title="건축물 해체계획서 작성"
+              description=""
+            />
+            <FeatureCard
+              icon={BsBuildingCheck}
+              title="건축물 정기점검"
+              description=""
+            />
+            <FeatureCard
+              icon={FaHelmetSafety}
+              title="석면해체공사 감리"
+              description=""
             />
           </div>
         </div>
