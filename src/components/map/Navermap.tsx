@@ -16,10 +16,14 @@ export default function Navermap() {
       <MapDiv style={{ width: "100%", height: "100%" }}>
         {navermaps ? (
           <NaverMap
-            defaultCenter={new navermaps.LatLng(35.8649597, 128.63412)}
+            defaultCenter={
+              new navermaps.LatLng(35.8662910116539, 128.63429893576)
+            }
             defaultZoom={15}
           >
-            <Marker position={new navermaps.LatLng(35.8649597, 128.63412)} />
+            <Marker
+              position={new navermaps.LatLng(35.8662910116539, 128.63429893576)}
+            />
           </NaverMap>
         ) : (
           <div className="w-full h-full flex items-center justify-center">
