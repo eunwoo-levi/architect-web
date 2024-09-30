@@ -3,17 +3,7 @@
 import React from "react";
 import dynamic from "next/dynamic";
 import { NavermapsProvider } from "react-naver-maps";
-
-const DynamicNavermap = dynamic(() => import("@/components/map/Navermap"), {
-  ssr: false,
-  loading: () => (
-    <div className="w-full h-96 flex items-center justify-center bg-gray-100 rounded-lg">
-      <p className="text-lg text-gray-500 animate-pulse">
-        지도를 불러오는 중...
-      </p>
-    </div>
-  ),
-});
+import Navermap from "@/components/map/Navermap";
 
 export default function ContactPage() {
   return (
@@ -33,7 +23,7 @@ export default function ContactPage() {
             찾아오시는 길
           </p>
           <div className="w-full h-96 rounded-lg overflow-hidden shadow-md mb-6">
-            <DynamicNavermap />
+            <Navermap />
           </div>
           <form className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
