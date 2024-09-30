@@ -16,7 +16,7 @@ const BannerItem: React.FC<BannerItemProps> = ({
   title,
   description,
 }) => (
-  <div className="flex flex-col items-center p-5 text-center">
+  <div className="flex flex-col items-center p-1 text-center">
     <Icon className="w-12 h-12 mb-2 text-blue-600" />
     <h3 className="text-lg font-semibold mb-1 leading-tight">
       {title.map((line, index) => (
@@ -45,18 +45,18 @@ const ProfessionalBanner: React.FC = () => {
     },
     {
       icon: FaHelmetSafety,
-      title: ["공사 감리"],
+      title: ["건축 감리,", "석면해체공사 감리"],
       description: "철저한 현장 관리",
     },
     {
       icon: LuClipboardCheck,
-      title: ["건축물", "점검"],
+      title: ["건축물", "해체계획서", "작성"],
       description: "안전을 최우선으로",
     },
     {
       icon: LuSchool,
       title: ["학교공간혁신"],
-      description: "대구교육청 전문가",
+      description: "대구 경북 및 교육청 공간혁신 전문가",
     },
     {
       icon: SlBadge,
