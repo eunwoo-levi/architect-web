@@ -1,6 +1,6 @@
 # 건축사 포트폴리오 웹사이트
 
-[웹사이트 링크](https://jinsung-architect.vercel.app/)
+[웹사이트 링크](https://www.daegu-jinsung.com/)
 
 ## 기술 스택
 
