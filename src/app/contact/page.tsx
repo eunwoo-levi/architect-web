@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import dynamic from "next/dynamic"; // dynamic import를 위한 모듈
 import { NavermapsProvider } from "react-naver-maps";
 
@@ -55,6 +54,15 @@ export default function ContactPage() {
                 className="text-lg text-blue-600 underline hover:text-blue-800 transition-colors"
               >
                 053-716-7927
+              </a>
+            </div>
+            <div className="text-center">
+              <h3 className="text-xl font-semibold text-gray-600">팩스번호:</h3>
+              <a
+                href="fax:053-326-6698"
+                className="text-lg text-blue-600 underline hover:text-blue-800 transition-colors"
+              >
+                053-326-6698
               </a>
             </div>
           </section>

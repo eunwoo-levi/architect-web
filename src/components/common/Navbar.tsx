@@ -16,7 +16,7 @@ export default function Navbar() {
           alt="진성 건축사 사무소 로고"
         />
         <span className="flex flex-col">
-          <div className="font-bold text-lg">진 성</div>
+          <div className="font-extrabold text-lg">진 성</div>
           <div className="text-sm font-semibold text-gray-600">
             건축사 사무소
           </div>
