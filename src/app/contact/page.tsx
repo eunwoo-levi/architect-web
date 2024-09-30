@@ -1,8 +1,13 @@
 "use client";
 
 import React from "react";
+import dynamic from "next/dynamic"; // 동적 import 추가
 import { NavermapsProvider } from "react-naver-maps";
-import Navermap from "@/components/map/Navermap";
+
+// Navermap 컴포넌트를 동적으로 불러오기
+const Navermap = dynamic(() => import("@/components/map/Navermap"), {
+  ssr: false, // 서버 사이드 렌더링 비활성화
+});
 
 export default function ContactPage() {
   return (
