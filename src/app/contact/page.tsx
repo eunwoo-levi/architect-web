@@ -4,6 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic"; // dynamic import를 위한 모듈
 import { NavermapsProvider } from "react-naver-maps";
 
+// react-naver-maps 라이브러리에서 브라우저 환경에서만 동작하는 컴포넌트 -> SSR 하면 안됌 (CSR만 가능)
 const Navermap = dynamic(() => import("@/components/map/Navermap"), {
   ssr: false, // 서버 사이드 렌더링 비활성화
 });

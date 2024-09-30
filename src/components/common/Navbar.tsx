@@ -5,7 +5,10 @@ import NavToggle from "./NavToggle";
 export default function Navbar() {
   return (
     <nav className="border w-full min-h-[60px] flex justify-between items-center px-4 md:px-6 py-2 shadow-sm">
-      <Link href="/" className="flex items-center gap-3">
+      <Link
+        href="/"
+        className="flex items-center gap-3 hover:scale-105 transition-transform"
+      >
         <Image
           width={75}
           height={75}
