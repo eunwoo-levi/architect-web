@@ -45,7 +45,12 @@ export default function ContactPage() {
 
             <div className="text-center">
               <h3 className="text-xl font-semibold text-gray-600">전화번호:</h3>
-              <p className="text-lg text-blue-600">053-716-7927</p>
+              <a
+                href="tel:053-716-7927"
+                className="text-lg text-blue-600 underline hover:text-blue-800 transition-colors"
+              >
+                053-716-7927
+              </a>
             </div>
           </section>
         </section>
