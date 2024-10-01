@@ -27,12 +27,14 @@ export const metadata: Metadata = {
       "혁신적이고 기능적인 건축 설계로 고객의 비전을 실현합니다. 주거, 상업, 공공 건물 등 다양한 프로젝트 경험을 보유한 진성 건축사 사무소입니다.",
     images: [
       {
-        url: "/brand.webp",
+        url: "https://www.daegu-jinsung.com/brand.webp",
         width: 1200,
         height: 630,
         alt: "대구 진성 건축사 사무소 대표 이미지",
       },
     ],
+    locale: "ko_KR",
+    type: "website",
   },
   robots: "index, follow",
   viewport: "width=device-width, initial-scale=1",
@@ -60,11 +62,31 @@ export default function RootLayout({
               "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다.",
             address: {
               "@type": "PostalAddress",
+              streetAddress: "대구 수성구 범어로 192 2층",
               addressLocality: "대구",
+              addressRegion: "경상북도",
+              postalCode: "42192",
               addressCountry: "KR",
             },
             url: "https://www.daegu-jinsung.com",
             telephone: "+82-053-716-7927",
+            geo: {
+              "@type": "GeoCoordinates",
+              latitude: 35.8662910116539,
+              longitude: 128.63429893576,
+            },
+            openingHoursSpecification: {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+              ],
+              opens: "09:00",
+              closes: "18:00",
+            },
           })}
         </script>
         <NaverMapsWrapper>
