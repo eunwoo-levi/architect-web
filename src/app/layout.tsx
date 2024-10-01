@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description:
     "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다. 주거, 상업, 공공 건물 등 다양한 프로젝트를 수행합니다.",
   keywords:
-    "건축사 사무소, 건축 설계, 주택 설계, 상업 건물, 리모델링, 인테리어 디자인, 대구 건축사, 대구 감리, 대구 건축설계, 대구 건축",
+    "건축사 사무소, 건축 설계, 주택 설계, 상업 건물, 리모델링, 인테리어 디자인, 대구 건축사, 대구 감리, 대구 건축설계, 대구 건축, 대구 건축사 사무소",
   openGraph: {
     title: "진성 건축사 사무소 - 전문적인 건축 설계 서비스",
     description:
@@ -34,7 +34,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+
   robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1",
   other: {
     "naver-site-verification": "b8f74214ea0d19776b22e18ef5c5fa36262302ba",
   },
@@ -46,7 +48,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
