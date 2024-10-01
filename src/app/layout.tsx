@@ -27,7 +27,7 @@ export const metadata: Metadata = {
       "혁신적이고 기능적인 건축 설계로 고객의 비전을 실현합니다. 주거, 상업, 공공 건물 등 다양한 프로젝트 경험을 보유한 진성 건축사 사무소입니다.",
     images: [
       {
-        url: "https://your-website.com/og-image.jpg",
+        url: "/brand.webp",
         width: 1200,
         height: 630,
         alt: "진성 건축사 사무소 대표 이미지",
