@@ -34,7 +34,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-
   robots: "index, follow",
   viewport: "width=device-width, initial-scale=1",
   other: {
@@ -52,6 +51,22 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "ArchitectureService",
+            name: "진성 건축사 사무소",
+            description:
+              "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다.",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "대구",
+              addressCountry: "KR",
+            },
+            url: "https://www.daegu-jinsung.com",
+            telephone: "+82-053-716-7927",
+          })}
+        </script>
         <NaverMapsWrapper>
           <Navbar />
           {children}
