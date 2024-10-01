@@ -16,7 +16,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "진성 건축사 사무소",
+  title: "대구 진성 건축사 사무소",
   description:
     "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다. 주거, 상업, 공공 건물 등 다양한 프로젝트를 수행합니다.",
   keywords:
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/brand.webp",
         width: 1200,
         height: 630,
-        alt: "진성 건축사 사무소 대표 이미지",
+        alt: "대구 진성 건축사 사무소 대표 이미지",
       },
     ],
   },
@@ -55,7 +55,7 @@ export default function RootLayout({
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ArchitectureService",
-            name: "진성 건축사 사무소",
+            name: "대구 진성 건축사 사무소",
             description:
               "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다.",
             address: {
