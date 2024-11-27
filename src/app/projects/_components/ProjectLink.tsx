@@ -10,15 +10,14 @@ export default function ProjectLink({ title, imageUrl }: ProjectProps) {
   return (
     <Link
       href={`/projects/${title}`}
-      className='relative hover:z-10 group flex flex-col w-[280px] h-[280px] lg:w-[400px] lg:h-[400px] hover:scale-105 hover:ring-4 ring-amber-700 transform duration-200'
+      className='relative hover:z-10 group flex flex-col hover:scale-105 hover:ring-4 ring-amber-700 transform duration-200'
     >
       <Image
         src={imageUrl}
         alt='project'
-        width={400}
-        height={400}
-        sizes='(max-width: 1024px) 280px, 400px'
-        className='object-cover w-full h-full rounded-sm'
+        width={280}
+        height={280}
+        className='object-cover lg:w-[400px] lg:h-[400px] rounded-sm'
       />
       <div className='absolute bottom-0 left-0 right-0 text-center font-bold text-white bg-black/30 py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
         {title}
