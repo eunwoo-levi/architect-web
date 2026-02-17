@@ -11,6 +11,18 @@ const config: Config = {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        accent: {
+          DEFAULT: "#8B7355",
+          light: "#C5A87D",
+          dark: "#6B5840",
+        },
+      },
+      fontFamily: {
+        sans: ["var(--font-geist-sans)", "sans-serif"],
+      },
+      letterSpacing: {
+        widest2: "0.2em",
+        widest3: "0.3em",
       },
     },
   },

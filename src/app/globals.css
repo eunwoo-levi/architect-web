@@ -1,3 +1,89 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #1C1917;
+  --accent: #8B7355;
+  --accent-light: #C5A87D;
+  --muted: #78716C;
+  --border: #E7E5E4;
+  --surface: #F5F4F0;
+  --navbar-height: 4rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply text-stone-900 antialiased bg-white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+}
+
+@layer utilities {
+  .section-padding {
+    @apply px-6 md:px-12 lg:px-20 xl:px-32;
+  }
+
+  .text-accent {
+    color: var(--accent);
+  }
+
+  .bg-accent {
+    background-color: var(--accent);
+  }
+
+  .border-accent {
+    border-color: var(--accent);
+  }
+}
+
+/* Swiper customization */
+.swiper-button-next,
+.swiper-button-prev {
+  color: rgba(255, 255, 255, 0.6) !important;
+  transform: scale(0.7) !important;
+  transition: color 0.2s !important;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  color: white !important;
+}
+
+.swiper-pagination-bullet {
+  background: rgba(255, 255, 255, 0.5) !important;
+  width: 6px !important;
+  height: 6px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: white !important;
+  width: 24px !important;
+  border-radius: 3px !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f5f5f4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a8a29e;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8B7355;
+}

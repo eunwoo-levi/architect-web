@@ -1,47 +1,126 @@
-import type { Metadata } from 'next';
-import localFont from 'next/font/local';
-import './globals.css';
-import Navbar from '@/components/common/Navbar';
-import NaverMapsWrapper from '@/components/map/NaverMapsWrapper';
+import type { Metadata } from "next";
+import localFont from "next/font/local";
+import "./globals.css";
+import Navbar from "@/components/common/Navbar";
+import NaverMapsWrapper from "@/components/map/NaverMapsWrapper";
+import Link from "next/link";
 
 const geistSans = localFont({
-  src: '../../public/fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
-  weight: '100 900',
+  src: "../../public/fonts/GeistVF.woff",
+  variable: "--font-geist-sans",
+  weight: "100 900",
 });
 const geistMono = localFont({
-  src: '../../public/fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
-  weight: '100 900',
+  src: "../../public/fonts/GeistMonoVF.woff",
+  variable: "--font-geist-mono",
+  weight: "100 900",
 });
 
 export const metadata: Metadata = {
-  title: '대구 진성 건축사 사무소',
+  title: "대구 진성 건축사 사무소",
   description:
-    '전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다. 주거, 상업, 공공 건물 등 다양한 프로젝트를 수행합니다.',
+    "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다. 주거, 상업, 공공 건물 등 다양한 프로젝트를 수행합니다.",
   keywords:
-    '건축사 사무소, 건축 설계, 주택 설계, 상업 건물, 리모델링, 인테리어 디자인, 대구 건축사, 대구 감리, 대구 건축설계, 대구 건축, 대구 건축사 사무소, 대구 진성, 대구 진성 건축사 사무소',
+    "건축사 사무소, 건축 설계, 주택 설계, 상업 건물, 리모델링, 인테리어 디자인, 대구 건축사, 대구 감리, 대구 건축설계, 대구 건축, 대구 건축사 사무소, 대구 진성, 대구 진성 건축사 사무소",
   openGraph: {
-    title: '진성 건축사 사무소 - 전문적인 건축 설계 서비스',
+    title: "진성 건축사 사무소 - 전문적인 건축 설계 서비스",
     description:
-      '혁신적이고 기능적인 건축 설계로 고객의 비전을 실현합니다. 주거, 상업, 공공 건물 등 다양한 프로젝트 경험을 보유한 진성 건축사 사무소입니다.',
+      "혁신적이고 기능적인 건축 설계로 고객의 비전을 실현합니다. 주거, 상업, 공공 건물 등 다양한 프로젝트 경험을 보유한 진성 건축사 사무소입니다.",
     images: [
       {
-        url: 'https://www.daegu-jinsung.com/brand.webp',
+        url: "https://www.daegu-jinsung.com/brand.webp",
         width: 1200,
         height: 630,
-        alt: '대구 진성 건축사 사무소 대표 이미지',
+        alt: "대구 진성 건축사 사무소 대표 이미지",
       },
     ],
-    locale: 'ko_KR',
-    type: 'website',
+    locale: "ko_KR",
+    type: "website",
   },
-  robots: 'index, follow',
-  viewport: 'width=device-width, initial-scale=1',
+  robots: "index, follow",
+  viewport: "width=device-width, initial-scale=1",
   other: {
-    'naver-site-verification': 'b8f74214ea0d19776b22e18ef5c5fa36262302ba',
+    "naver-site-verification": "b8f74214ea0d19776b22e18ef5c5fa36262302ba",
   },
 };
+
+function Footer() {
+  return (
+    <footer className="w-full bg-stone-950 border-t border-stone-800">
+      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {/* Brand */}
+          <div>
+            <div className="flex flex-col">
+              <span className="font-bold text-sm tracking-[0.18em] text-white uppercase">
+                진 성
+              </span>
+              <span className="text-[11px] tracking-[0.12em] text-stone-500 font-medium mt-0.5">
+                건축사 사무소
+              </span>
+            </div>
+            <p className="mt-4 text-stone-500 text-xs leading-relaxed max-w-xs">
+              20년의 경험으로 고객의 비전을 현실로 만드는<br />
+              종합 건축 설계 전문 사무소입니다.
+            </p>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 className="text-[11px] tracking-[0.2em] text-stone-400 uppercase mb-4 font-medium">
+              Navigation
+            </h4>
+            <nav className="flex flex-col gap-2">
+              {[
+                { href: "/", label: "홈" },
+                { href: "/about", label: "회사소개" },
+                { href: "/projects", label: "프로젝트" },
+                { href: "/contact", label: "연락처" },
+              ].map(({ href, label }) => (
+                <Link
+                  key={href}
+                  href={href}
+                  className="text-stone-500 text-xs tracking-wide hover:text-accent-light transition-colors"
+                >
+                  {label}
+                </Link>
+              ))}
+            </nav>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="text-[11px] tracking-[0.2em] text-stone-400 uppercase mb-4 font-medium">
+              Contact
+            </h4>
+            <div className="flex flex-col gap-2 text-stone-500 text-xs">
+              <p>대구광역시 수성구 국채보상로186길 79</p>
+              <a href="tel:053-716-7927" className="hover:text-accent-light transition-colors">
+                T. 053-716-7927
+              </a>
+              <a href="fax:053-326-6698" className="hover:text-accent-light transition-colors">
+                F. 053-326-6698
+              </a>
+              <a href="mailto:nature0021@hanmail.net" className="hover:text-accent-light transition-colors">
+                nature0021@hanmail.net
+              </a>
+              <p className="mt-1 text-stone-600">월~금 09:00 – 18:00</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-stone-800 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+          <p className="text-stone-600 text-xs">
+            © {new Date().getFullYear()} 진성 건축사 사무소. All rights reserved.
+          </p>
+          <p className="text-stone-700 text-xs">
+            대한건축사협회 정회원
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
 
 export default function RootLayout({
   children,
@@ -49,40 +128,46 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='ko'>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <script type='application/ld+json'>
+    <html lang="ko">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+      >
+        <script type="application/ld+json">
           {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ArchitectureService',
-            name: '대구 진성 건축사 사무소',
-            description: '전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다.',
+            "@context": "https://schema.org",
+            "@type": "ArchitectureService",
+            name: "대구 진성 건축사 사무소",
+            description:
+              "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다.",
             address: {
-              '@type': 'PostalAddress',
-              streetAddress: '대구 수성구 범어로 192 2층',
-              addressLocality: '대구',
-              addressRegion: '경상북도',
-              postalCode: '42192',
-              addressCountry: 'KR',
+              "@type": "PostalAddress",
+              streetAddress: "대구 수성구 범어로 192 2층",
+              addressLocality: "대구",
+              addressRegion: "경상북도",
+              postalCode: "42192",
+              addressCountry: "KR",
             },
-            url: 'https://www.daegu-jinsung.com',
-            telephone: '+82-053-716-7927',
+            url: "https://www.daegu-jinsung.com",
+            telephone: "+82-053-716-7927",
             geo: {
-              '@type': 'GeoCoordinates',
+              "@type": "GeoCoordinates",
               latitude: 35.8662910116539,
               longitude: 128.63429893576,
             },
             openingHoursSpecification: {
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-              opens: '09:00',
-              closes: '18:00',
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              opens: "09:00",
+              closes: "18:00",
             },
           })}
         </script>
         <NaverMapsWrapper>
           <Navbar />
-          {children}
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
         </NaverMapsWrapper>
       </body>
     </html>

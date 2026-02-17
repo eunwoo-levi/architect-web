@@ -2,44 +2,59 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { RxHamburgerMenu } from "react-icons/rx";
+import { RxHamburgerMenu, RxCross2 } from "react-icons/rx";
 
-const linkClassName =
-  "text-md font-semibold hover:scale-105 transition-transform duration-200";
+const links = [
+  { href: "/about", label: "회사소개" },
+  { href: "/projects", label: "프로젝트" },
+  { href: "/contact", label: "연락처" },
+];
 
 export default function NavToggle() {
-  const [isToggleOpen, setIsToggleOpen] = useState(false);
-
-  const toggleMenu = () => setIsToggleOpen(!isToggleOpen);
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative">
+    <>
       <button
-        onClick={toggleMenu}
-        className="md:hidden focus:outline-none"
-        aria-expanded={isToggleOpen}
-        aria-label="Toggle navigation menu"
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-2 text-stone-700 hover:text-accent transition-colors"
+        aria-label="메뉴 열기/닫기"
+        aria-expanded={isOpen}
       >
-        <RxHamburgerMenu size={25} />
+        {isOpen ? <RxCross2 size={22} /> : <RxHamburgerMenu size={22} />}
       </button>
+
+      {/* Mobile fullscreen overlay */}
       <div
-        className={`${
-          isToggleOpen ? "flex" : "hidden"
-        } min-w-[200px] md:min-w-0 p-4 md:p-0 gap-4 md:gap-6 md:flex flex-col md:flex-row items-start md:items-center absolute md:relative right-0 top-10 md:top-0 bg-white md:bg-transparent shadow-md md:shadow-none z-50`}
+        className={`fixed inset-x-0 top-16 bottom-0 bg-white z-40 flex flex-col transition-all duration-300 ${
+          isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+        }`}
       >
-        <Link href="/about" className={linkClassName} onClick={toggleMenu}>
-          회사소개
-        </Link>
-        <Link href="/projects" className={linkClassName} onClick={toggleMenu}>
-          프로젝트
-        </Link>
-        <Link href="/contact" className={linkClassName} onClick={toggleMenu}>
-          연락처
-        </Link>
-        <Link href="/board" className={linkClassName} onClick={toggleMenu}>
-          자유게시판
-        </Link>
+        <nav className="flex flex-col px-8 pt-10 gap-1">
+          {links.map(({ href, label }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={() => setIsOpen(false)}
+              className="text-2xl font-medium tracking-widest text-stone-900 hover:text-accent transition-colors py-4 border-b border-stone-100"
+            >
+              {label}
+            </Link>
+          ))}
+          <Link
+            href="/contact"
+            onClick={() => setIsOpen(false)}
+            className="mt-8 text-center text-sm tracking-widest bg-stone-900 text-white px-8 py-4 hover:bg-accent transition-colors font-medium"
+          >
+            문의하기
+          </Link>
+        </nav>
+
+        <div className="px-8 mt-auto pb-12 text-stone-400 text-xs tracking-wider">
+          <p>대구광역시 수성구 국채보상로186길 79</p>
+          <p className="mt-1">053-716-7927</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
