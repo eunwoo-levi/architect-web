@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { LuBuilding2, LuClipboardCheck, LuSchool } from "react-icons/lu";
@@ -5,6 +6,15 @@ import { FaHelmetSafety } from "react-icons/fa6";
 import { BsBuildingCheck } from "react-icons/bs";
 import { MdFactCheck } from "react-icons/md";
 import { IconType } from "react-icons";
+
+export const metadata: Metadata = {
+  title: "회사소개",
+  description:
+    "대구 수성구 진성 건축사 사무소 소개. 20년 경력의 전문 건축사가 운영하는 대구 건축사 사무소로, 건축 설계·감리·인허가 서비스를 제공합니다.",
+  alternates: {
+    canonical: "/about",
+  },
+};
 
 interface ServiceItem {
   icon: IconType;

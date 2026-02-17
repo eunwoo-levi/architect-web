@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import ProjectLink from "./_components/ProjectLink";
 import { data } from "./data";
+
+export const metadata: Metadata = {
+  title: "포트폴리오",
+  description:
+    "대구 진성 건축사 사무소의 프로젝트 포트폴리오. 교육 시설, 의료 시설, 상업 시설, 공공 시설 등 대구 지역 다수의 건축 설계 프로젝트를 확인하세요.",
+  alternates: {
+    canonical: "/projects",
+  },
+};
 
 interface ProjectProps {
   title: string;

@@ -17,15 +17,24 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "대구 진성 건축사 사무소",
+  title: {
+    default: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
+    template: "%s | 대구 진성 건축사 사무소",
+  },
   description:
-    "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다. 주거, 상업, 공공 건물 등 다양한 프로젝트를 수행합니다.",
+    "대구 수성구 진성 건축사 사무소. 20년 경력의 대구 건축사가 주거·상업·공공 건물 설계와 감리를 전문으로 합니다. 대구 건축사 사무소 상담 문의 053-716-7927.",
   keywords:
-    "건축사 사무소, 건축 설계, 주택 설계, 상업 건물, 리모델링, 인테리어 디자인, 대구 건축사, 대구 감리, 대구 건축설계, 대구 건축, 대구 건축사 사무소, 대구 진성, 대구 진성 건축사 사무소",
+    "대구 건축사, 대구 건축사 사무소, 대구 진성, 진성 건축사, 대구 건축설계, 대구 건축, 대구 감리, 대구 수성구 건축사, 건축사 사무소, 주택 설계, 상업 건물 설계, 리모델링",
+  metadataBase: new URL("https://www.daegu-jinsung.com"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "진성 건축사 사무소 - 전문적인 건축 설계 서비스",
+    title: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
     description:
-      "혁신적이고 기능적인 건축 설계로 고객의 비전을 실현합니다. 주거, 상업, 공공 건물 등 다양한 프로젝트 경험을 보유한 진성 건축사 사무소입니다.",
+      "대구 수성구 20년 경력 진성 건축사 사무소. 주거·상업·공공 건물 설계 및 감리 전문. 053-716-7927",
+    url: "https://www.daegu-jinsung.com",
+    siteName: "대구 진성 건축사 사무소",
     images: [
       {
         url: "https://www.daegu-jinsung.com/brand.webp",
@@ -37,8 +46,14 @@ export const metadata: Metadata = {
     locale: "ko_KR",
     type: "website",
   },
-  robots: "index, follow",
-  viewport: "width=device-width, initial-scale=1",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
   other: {
     "naver-site-verification": "b8f74214ea0d19776b22e18ef5c5fa36262302ba",
   },
@@ -135,20 +150,23 @@ export default function RootLayout({
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "ArchitectureService",
-            name: "대구 진성 건축사 사무소",
+            "@type": ["LocalBusiness", "ArchitectFirm"],
+            name: "진성 건축사 사무소",
+            alternateName: ["대구 진성 건축사 사무소", "대구 진성", "진성 건축사"],
             description:
-              "전문적이고 창의적인 건축 설계 서비스를 제공하는 대구 진성 건축사 사무소입니다.",
+              "대구 수성구 소재 진성 건축사 사무소. 20년 경력의 전문 건축사가 주거·상업·공공 건물 설계 및 감리 서비스를 제공합니다.",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "대구 수성구 범어로 192 2층",
-              addressLocality: "대구",
-              addressRegion: "경상북도",
+              streetAddress: "국채보상로186길 79",
+              addressLocality: "대구광역시 수성구",
+              addressRegion: "대구",
               postalCode: "42192",
               addressCountry: "KR",
             },
             url: "https://www.daegu-jinsung.com",
-            telephone: "+82-053-716-7927",
+            telephone: "+82-53-716-7927",
+            faxNumber: "+82-53-326-6698",
+            email: "nature0021@hanmail.net",
             geo: {
               "@type": "GeoCoordinates",
               latitude: 35.8662910116539,
@@ -160,6 +178,15 @@ export default function RootLayout({
               opens: "09:00",
               closes: "18:00",
             },
+            priceRange: "$$",
+            areaServed: {
+              "@type": "City",
+              name: "대구광역시",
+            },
+            hasMap: "https://maps.google.com/?q=35.8662910116539,128.63429893576",
+            sameAs: [
+              "https://www.daegu-jinsung.com",
+            ],
           })}
         </script>
         <NaverMapsWrapper>
