@@ -40,7 +40,7 @@ const services: Service[] = [
   {
     icon: LuTrophy,
     title: "삼성 라이온즈 파크 4년 감리",
-    description: "대구 삼성 라이온즈 파크 신축 공사 4년간 현장 감리 수행",
+    description: "대구 삼성 라이온즈 파크 공사 4년간 현장 감리 수행",
   },
   {
     icon: SlBadge,
