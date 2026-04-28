@@ -1,5 +1,5 @@
 import React from "react";
-import { LuBuilding2, LuClipboardCheck, LuSchool } from "react-icons/lu";
+import { LuBuilding2, LuClipboardCheck, LuSchool, LuBox } from "react-icons/lu";
 import { FaHelmetSafety } from "react-icons/fa6";
 import { SlBadge } from "react-icons/sl";
 import { IoMdTime } from "react-icons/io";
@@ -42,6 +42,11 @@ const services: Service[] = [
     title: "20년 이상 경력",
     description: "다양한 프로젝트 수행으로 축적된 풍부한 경험과 노하우",
   },
+  {
+    icon: LuBox,
+    title: "BIM 설계",
+    description: "3D 기반 건물 정보 모델링(BIM)을 활용한 정밀 설계 서비스",
+  },
 ];
 
 const ProfessionalBanner: React.FC = () => {
@@ -68,7 +73,7 @@ const ProfessionalBanner: React.FC = () => {
         </div>
 
         {/* Services grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-stone-200">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-px bg-stone-200">
           {services.map((service, index) => (
             <div
               key={index}
