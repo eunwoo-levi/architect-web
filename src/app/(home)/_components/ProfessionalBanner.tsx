@@ -1,5 +1,5 @@
 import React from "react";
-import { LuBuilding2, LuClipboardCheck, LuSchool, LuBox } from "react-icons/lu";
+import { LuBuilding2, LuClipboardCheck, LuSchool, LuBox, LuTrophy } from "react-icons/lu";
 import { FaHelmetSafety } from "react-icons/fa6";
 import { SlBadge } from "react-icons/sl";
 import { IoMdTime } from "react-icons/io";
@@ -33,6 +33,16 @@ const services: Service[] = [
     description: "대구·경북 교육청 공간혁신 사업 전문, 학습 환경 혁신 설계",
   },
   {
+    icon: LuBox,
+    title: "BIM 설계",
+    description: "3D 기반 건물 정보 모델링(BIM)을 활용한 정밀 설계 서비스",
+  },
+  {
+    icon: LuTrophy,
+    title: "삼성 라이온즈 파크 4년 감리",
+    description: "대구 삼성 라이온즈 파크 신축 공사 4년간 현장 감리 수행",
+  },
+  {
     icon: SlBadge,
     title: "전문 자격",
     description: "대한건축사협회 정회원, 검증된 전문 자격 보유",
@@ -41,11 +51,6 @@ const services: Service[] = [
     icon: IoMdTime,
     title: "20년 이상 경력",
     description: "다양한 프로젝트 수행으로 축적된 풍부한 경험과 노하우",
-  },
-  {
-    icon: LuBox,
-    title: "BIM 설계",
-    description: "3D 기반 건물 정보 모델링(BIM)을 활용한 정밀 설계 서비스",
   },
 ];
 
