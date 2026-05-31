@@ -6,8 +6,8 @@ import Image from "next/image";
 const stats = [
   { value: "20+", label: "년 경력" },
   { value: "100+", label: "완료 프로젝트" },
-  { value: "9", label: "분야별 수상" },
-  { value: "1", label: "건축사 자격" },
+  { value: "100+", label: "감리 현장" },
+  { value: "", label: "건축사 자격" },
 ];
 
 export default function Home() {
@@ -55,10 +55,12 @@ export default function Home() {
             <div className="grid grid-cols-2 gap-px bg-stone-700">
               {stats.map((stat) => (
                 <div key={stat.label} className="bg-stone-800 p-8 flex flex-col items-center justify-center text-center">
-                  <span className="text-4xl md:text-5xl font-bold text-accent-light">
-                    {stat.value}
-                  </span>
-                  <span className="mt-2 text-xs tracking-[0.2em] text-stone-400 uppercase">
+                  {stat.value && (
+                    <span className="text-4xl md:text-5xl font-bold text-accent-light">
+                      {stat.value}
+                    </span>
+                  )}
+                  <span className={stat.value ? "mt-2 text-xs tracking-[0.2em] text-stone-400 uppercase" : "text-2xl md:text-3xl font-bold text-accent-light tracking-wide"}>
                     {stat.label}
                   </span>
                 </div>
