@@ -5,7 +5,7 @@ import Image from "next/image";
 
 const stats = [
   { value: "20+", label: "년 경력" },
-  { value: "100+", label: "완료 프로젝트" },
+  { value: "50+", label: "완료 프로젝트" },
   { value: "100+", label: "감리 현장" },
   { value: "", label: "건축사 자격" },
 ];
@@ -54,15 +54,37 @@ export default function Home() {
             {/* Right: Stats */}
             <div className="grid grid-cols-2 gap-px bg-stone-700">
               {stats.map((stat) => (
-                <div key={stat.label} className="bg-stone-800 p-8 flex flex-col items-center justify-center text-center">
-                  {stat.value && (
-                    <span className="text-4xl md:text-5xl font-bold text-accent-light">
-                      {stat.value}
-                    </span>
+                <div key={stat.label} className="bg-stone-800 p-8 flex flex-col items-center justify-center text-center min-h-[140px]">
+                  {stat.value ? (
+                    <>
+                      <span className="text-4xl md:text-5xl font-bold text-accent-light">
+                        {stat.value}
+                      </span>
+                      <span className="mt-2 text-xs tracking-[0.2em] text-stone-400 uppercase">
+                        {stat.label}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <svg
+                        className="w-10 h-10 text-accent-light"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                      </svg>
+                      <span className="mt-3 text-sm font-bold text-accent-light tracking-[0.18em] uppercase">
+                        건축사 자격
+                      </span>
+                      <span className="mt-1.5 text-[10px] tracking-[0.22em] text-stone-500 uppercase">
+                        국가 공인
+                      </span>
+                    </>
                   )}
-                  <span className={stat.value ? "mt-2 text-xs tracking-[0.2em] text-stone-400 uppercase" : "text-2xl md:text-3xl font-bold text-accent-light tracking-wide"}>
-                    {stat.label}
-                  </span>
                 </div>
               ))}
             </div>
