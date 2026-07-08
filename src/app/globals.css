@@ -58,6 +58,20 @@
   border-radius: 3px !important;
 }
 
+/* Hero slider Ken Burns effect */
+@keyframes kenburns {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.08);
+  }
+}
+
+.swiper-slide-active .kenburns-img {
+  animation: kenburns 6s ease-out forwards;
+}
+
 /* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 4px;
