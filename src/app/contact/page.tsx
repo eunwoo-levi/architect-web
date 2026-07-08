@@ -4,6 +4,9 @@ import dynamic from "next/dynamic";
 import { NavermapsProvider } from "react-naver-maps";
 import { siteConfig } from "@/config/site";
 import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
+import FadeIn from "@/components/motion/FadeIn";
 
 const Navermap = dynamic(() => import("@/components/map/Navermap"), {
   ssr: false,
@@ -54,17 +57,14 @@ export default function ContactPage() {
         {/* ── Page Header ── */}
         <section className="w-full bg-stone-900 py-20 md:py-24">
           <div className="max-w-screen-xl mx-auto px-6 md:px-10">
-            <span className="text-[11px] tracking-[0.28em] text-accent-light font-medium uppercase">
-              Contact
-            </span>
-            <h1 className="mt-4 text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-              연락처
-            </h1>
-            <div className="mt-5 w-12 h-px bg-accent" />
-            <p className="mt-5 text-stone-400 text-sm md:text-base max-w-lg leading-relaxed">
-              궁금하신 사항이나 프로젝트 문의가 있으시면 언제든지 연락 주세요.
-              성실하게 답변드리겠습니다.
-            </p>
+            <FadeIn>
+              <SectionHeading
+                eyebrow="Contact"
+                title="연락처"
+                tone="dark"
+                description="궁금하신 사항이나 프로젝트 문의가 있으시면 언제든지 연락 주세요. 성실하게 답변드리겠습니다."
+              />
+            </FadeIn>
           </div>
         </section>
 
@@ -74,14 +74,8 @@ export default function ContactPage() {
             <div className="grid lg:grid-cols-[380px_1fr] gap-12 lg:gap-16">
 
               {/* Left: Contact Info */}
-              <div>
-                <span className="text-[11px] tracking-[0.25em] text-accent font-medium uppercase">
-                  Get in Touch
-                </span>
-                <h2 className="mt-3 text-2xl md:text-3xl font-bold text-stone-900 tracking-tight">
-                  찾아오시는 길
-                </h2>
-                <div className="mt-4 w-10 h-px bg-accent" />
+              <FadeIn>
+                <SectionHeading eyebrow="Get in Touch" title="찾아오시는 길" size="md" />
 
                 <div className="mt-8 flex flex-col gap-6">
                   {contactInfo.map((info) => (
@@ -119,24 +113,21 @@ export default function ContactPage() {
                     설계부터 감리까지 모든 건축 관련 문의를<br />
                     이메일이나 전화로 연락 주시면 빠르게 답변드리겠습니다.
                   </p>
-                  <a
-                    href="mailto:nature0021@hanmail.net"
-                    className="inline-block mt-4 text-xs tracking-widest bg-stone-900 text-white px-6 py-3 hover:bg-accent transition-colors duration-300"
-                  >
+                  <Button href="mailto:nature0021@hanmail.net" variant="solid-dark" size="md" className="mt-4">
                     이메일 보내기
-                  </a>
+                  </Button>
                 </div>
-              </div>
+              </FadeIn>
 
               {/* Right: Map */}
-              <div className="flex flex-col">
+              <FadeIn delay={0.1} className="flex flex-col">
                 <div className="rounded-none overflow-hidden border border-stone-200 flex-1 min-h-[400px] md:min-h-[500px]">
                   <Navermap />
                 </div>
                 <p className="mt-3 text-stone-400 text-xs tracking-wide">
                   대구광역시 수성구 국채보상로186길 79 (범어동 136-8)
                 </p>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </section>
