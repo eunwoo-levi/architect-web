@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
 import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
+import FadeIn from "@/components/motion/FadeIn";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 
 interface Params {
   params: Promise<{ id: string }>;
@@ -54,6 +56,14 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   };
 }
 
+const metaFields = (project: NonNullable<ReturnType<typeof getProject>>) =>
+  [
+    { label: "위치", value: project.location },
+    { label: "면적", value: project.area },
+    { label: "준공", value: project.year },
+    { label: "분야", value: project.category },
+  ].filter((field): field is { label: string; value: string } => Boolean(field.value));
+
 export default async function ProjectDetailPage({ params }: Params) {
   const { id } = await params;
   const project = getProject(id);
@@ -61,6 +71,12 @@ export default async function ProjectDetailPage({ params }: Params) {
   if (!project) {
     notFound();
   }
+
+  const currentIndex = data.findIndex((p) => p.slug === project.slug);
+  const prevProject = data[(currentIndex - 1 + data.length) % data.length];
+  const nextProject = data[(currentIndex + 1) % data.length];
+  const gallery = project.images ?? [];
+  const meta = metaFields(project);
 
   const breadcrumbJsonLd = buildBreadcrumbList([
     { name: "홈", url: siteConfig.url },
@@ -98,23 +114,43 @@ export default async function ProjectDetailPage({ params }: Params) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
         <div className="absolute bottom-0 left-0 right-0 px-8 md:px-16 lg:px-24 pb-10 md:pb-14">
-          {project.category && (
-            <span className="text-[10px] tracking-[0.28em] text-accent-light uppercase font-medium">
-              {project.category}
-            </span>
-          )}
-          <h1 className="mt-2 text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-            {project.title}
-          </h1>
+          <FadeIn>
+            {project.category && (
+              <span className="text-[10px] tracking-[0.28em] text-accent-light uppercase font-medium">
+                {project.category}
+              </span>
+            )}
+            <h1 className="font-serif mt-2 text-3xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              {project.title}
+            </h1>
+          </FadeIn>
         </div>
       </section>
+
+      {/* ── Meta Strip ── */}
+      {meta.length > 0 && (
+        <section className="w-full bg-stone-900 border-b border-stone-800">
+          <div className="max-w-screen-xl mx-auto px-6 md:px-10">
+            <div className="flex flex-wrap gap-x-10 gap-y-3 py-5">
+              {meta.map((field) => (
+                <div key={field.label} className="flex items-baseline gap-2">
+                  <span className="text-[10px] tracking-[0.2em] text-stone-500 uppercase">
+                    {field.label}
+                  </span>
+                  <span className="text-sm text-stone-200 font-medium">{field.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── Content ── */}
       <section className="w-full py-16 md:py-20">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10">
           <div className="grid md:grid-cols-[1fr_300px] gap-16">
             {/* Main content */}
-            <div>
+            <FadeIn>
               <div className="flex items-center gap-4 pb-6 border-b border-stone-200">
                 <div className="w-10 h-px bg-accent" />
                 <span className="text-xs tracking-[0.2em] text-stone-400 uppercase">Project Details</span>
@@ -122,10 +158,27 @@ export default async function ProjectDetailPage({ params }: Params) {
               <p className="mt-8 text-stone-500 text-sm leading-relaxed">
                 {project.description}
               </p>
-            </div>
+
+              {gallery.length > 0 && (
+                <StaggerGroup className="mt-10 grid grid-cols-2 gap-px bg-stone-200">
+                  {gallery.map((src, index) => (
+                    <StaggerItem key={src + index}>
+                      <div className="relative aspect-[4/3] bg-stone-100">
+                        <Image
+                          src={src}
+                          alt={`${project.title} 이미지 ${index + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    </StaggerItem>
+                  ))}
+                </StaggerGroup>
+              )}
+            </FadeIn>
 
             {/* Sidebar */}
-            <div className="bg-stone-50 border border-stone-200 p-6 h-fit">
+            <FadeIn delay={0.1} className="bg-stone-50 border border-stone-200 p-6 h-fit">
               <h3 className="text-xs tracking-[0.2em] text-stone-400 uppercase font-medium mb-5">
                 Project Info
               </h3>
@@ -134,12 +187,12 @@ export default async function ProjectDetailPage({ params }: Params) {
                   <div className="text-[11px] tracking-wider text-stone-400 mb-1">프로젝트명</div>
                   <div className="text-sm font-medium text-stone-900">{project.title}</div>
                 </div>
-                {project.category && (
-                  <div className="pb-4 border-b border-stone-200">
-                    <div className="text-[11px] tracking-wider text-stone-400 mb-1">분야</div>
-                    <div className="text-sm font-medium text-stone-900">{project.category}</div>
+                {meta.map((field) => (
+                  <div key={field.label} className="pb-4 border-b border-stone-200">
+                    <div className="text-[11px] tracking-wider text-stone-400 mb-1">{field.label}</div>
+                    <div className="text-sm font-medium text-stone-900">{field.value}</div>
                   </div>
-                )}
+                ))}
                 <div>
                   <div className="text-[11px] tracking-wider text-stone-400 mb-1">설계사무소</div>
                   <div className="text-sm font-medium text-stone-900">진성 건축사 사무소</div>
@@ -151,8 +204,52 @@ export default async function ProjectDetailPage({ params }: Params) {
               >
                 문의하기
               </Link>
-            </div>
+            </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* ── Prev / Next Project Navigation ── */}
+      <section className="w-full border-t border-stone-200">
+        <div className="max-w-screen-xl mx-auto grid grid-cols-1 sm:grid-cols-2">
+          <Link
+            href={`/projects/${prevProject.slug}`}
+            className="group relative flex items-center gap-5 px-6 md:px-10 py-8 border-b sm:border-b-0 sm:border-r border-stone-200 hover:bg-stone-50 transition-colors"
+          >
+            <div className="relative w-16 h-16 shrink-0 overflow-hidden bg-stone-100">
+              <Image
+                src={prevProject.imageUrl}
+                alt={prevProject.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+            <div>
+              <span className="text-[10px] tracking-[0.2em] text-stone-400 uppercase">이전 프로젝트</span>
+              <h3 className="mt-1 text-sm font-semibold text-stone-900 group-hover:text-accent transition-colors">
+                {prevProject.title}
+              </h3>
+            </div>
+          </Link>
+          <Link
+            href={`/projects/${nextProject.slug}`}
+            className="group relative flex items-center justify-end gap-5 px-6 md:px-10 py-8 hover:bg-stone-50 transition-colors text-right"
+          >
+            <div>
+              <span className="text-[10px] tracking-[0.2em] text-stone-400 uppercase">다음 프로젝트</span>
+              <h3 className="mt-1 text-sm font-semibold text-stone-900 group-hover:text-accent transition-colors">
+                {nextProject.title}
+              </h3>
+            </div>
+            <div className="relative w-16 h-16 shrink-0 overflow-hidden bg-stone-100">
+              <Image
+                src={nextProject.imageUrl}
+                alt={nextProject.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </Link>
         </div>
       </section>
 

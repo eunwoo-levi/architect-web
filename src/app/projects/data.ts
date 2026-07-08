@@ -1,4 +1,17 @@
-export const data = [
+export interface Project {
+  title: string;
+  slug: string;
+  imageUrl: string;
+  category?: string;
+  description: string;
+  updatedAt: string;
+  images?: string[];
+  location?: string;
+  area?: string;
+  year?: string;
+}
+
+export const data: Project[] = [
   {
     title: "대구 라이온즈파크",
     slug: "daegu-lions-park",
