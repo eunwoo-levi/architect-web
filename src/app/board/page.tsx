@@ -1,4 +1,17 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "게시판",
+  description: "진성 건축사 사무소 게시판. 준비 중입니다.",
+  alternates: {
+    canonical: "/board",
+  },
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function BoardPage() {
   return (

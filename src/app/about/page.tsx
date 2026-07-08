@@ -6,15 +6,36 @@ import { FaHelmetSafety } from "react-icons/fa6";
 import { BsBuildingCheck } from "react-icons/bs";
 import { MdFactCheck } from "react-icons/md";
 import { IconType } from "react-icons";
+import { siteConfig } from "@/config/site";
+import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
+
+const description =
+  "대구 수성구 진성 건축사 사무소 소개. 20년 경력의 전문 건축사가 운영하는 대구 건축사 사무소로, 건축 설계·감리·인허가 서비스를 제공합니다.";
 
 export const metadata: Metadata = {
   title: "회사소개",
-  description:
-    "대구 수성구 진성 건축사 사무소 소개. 20년 경력의 전문 건축사가 운영하는 대구 건축사 사무소로, 건축 설계·감리·인허가 서비스를 제공합니다.",
+  description,
   alternates: {
     canonical: "/about",
   },
+  openGraph: {
+    title: "회사소개 | 대구 진성 건축사 사무소",
+    description,
+    url: `${siteConfig.url}/about`,
+    images: [{ url: "/aboutpage/architectdesign2.webp", alt: "진성 건축사 사무소" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "회사소개 | 대구 진성 건축사 사무소",
+    description,
+    images: ["/aboutpage/architectdesign2.webp"],
+  },
 };
+
+const breadcrumbJsonLd = buildBreadcrumbList([
+  { name: "홈", url: siteConfig.url },
+  { name: "회사소개", url: `${siteConfig.url}/about` },
+]);
 
 interface ServiceItem {
   icon: IconType;
@@ -81,6 +102,7 @@ const values = [
 export default function AboutPage() {
   return (
     <main className="w-full bg-white">
+      <JsonLd id="ld-json-breadcrumb-about" data={breadcrumbJsonLd} />
       {/* ── Hero ── */}
       <section className="relative h-[50vh] md:h-[60vh] min-h-[300px] overflow-hidden">
         <Image

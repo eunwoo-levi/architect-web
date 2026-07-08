@@ -1,18 +1,40 @@
 import type { Metadata } from "next";
 import ProjectLink from "./_components/ProjectLink";
 import { data } from "./data";
+import { siteConfig } from "@/config/site";
+import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
+
+const description =
+  "대구 진성 건축사 사무소의 프로젝트 포트폴리오. 교육 시설, 의료 시설, 상업 시설, 공공 시설 등 대구 지역 다수의 건축 설계 프로젝트를 확인하세요.";
 
 export const metadata: Metadata = {
   title: "포트폴리오",
-  description:
-    "대구 진성 건축사 사무소의 프로젝트 포트폴리오. 교육 시설, 의료 시설, 상업 시설, 공공 시설 등 대구 지역 다수의 건축 설계 프로젝트를 확인하세요.",
+  description,
   alternates: {
     canonical: "/projects",
   },
+  openGraph: {
+    title: "포트폴리오 | 대구 진성 건축사 사무소",
+    description,
+    url: `${siteConfig.url}/projects`,
+    images: [{ url: data[0].imageUrl, alt: "대구 진성 건축사 사무소 프로젝트" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "포트폴리오 | 대구 진성 건축사 사무소",
+    description,
+    images: [data[0].imageUrl],
+  },
 };
+
+const breadcrumbJsonLd = buildBreadcrumbList([
+  { name: "홈", url: siteConfig.url },
+  { name: "프로젝트", url: `${siteConfig.url}/projects` },
+]);
 
 interface ProjectProps {
   title: string;
+  slug: string;
   imageUrl: string;
   category?: string;
 }
@@ -20,6 +42,7 @@ interface ProjectProps {
 export default function ProjectPage() {
   return (
     <main className="w-full bg-white">
+      <JsonLd id="ld-json-breadcrumb-projects" data={breadcrumbJsonLd} />
       {/* ── Page Header ── */}
       <section className="w-full bg-stone-900 py-20 md:py-24">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10">
@@ -62,8 +85,9 @@ export default function ProjectPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200">
             {data.map((project: ProjectProps) => (
               <ProjectLink
-                key={project.title}
+                key={project.slug}
                 title={project.title}
+                slug={project.slug}
                 imageUrl={project.imageUrl}
                 category={project.category}
               />

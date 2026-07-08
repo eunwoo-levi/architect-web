@@ -18,7 +18,8 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-geist-sans)", "sans-serif"],
+        sans: ["var(--font-pretendard)", "-apple-system", "sans-serif"],
+        serif: ["var(--font-noto-serif-kr)", "serif"],
       },
       letterSpacing: {
         widest2: "0.2em",

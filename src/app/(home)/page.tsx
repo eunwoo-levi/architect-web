@@ -1,7 +1,26 @@
+import type { Metadata } from "next";
 import AutoPlaySlider from "@/components/AutoPlaySlider";
 import ProfessionalBanner from "./_components/ProfessionalBanner";
 import Link from "next/link";
 import Image from "next/image";
+import { siteConfig } from "@/config/site";
+
+export const metadata: Metadata = {
+  description: siteConfig.description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
+    description: siteConfig.description,
+    url: siteConfig.url,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
+    description: siteConfig.description,
+  },
+};
 
 const stats = [
   { value: "20+", label: "년 경력" },
@@ -15,6 +34,9 @@ export default function Home() {
     <main className="w-full">
       {/* ── Hero Slider ── */}
       <section className="w-full h-[calc(100vh-4rem)]">
+        <h1 className="sr-only">
+          대구 건축사 사무소 | 진성 건축사 사무소 – 주거·상업·공공 건축 설계 및 감리
+        </h1>
         <AutoPlaySlider />
       </section>
 
@@ -154,7 +176,7 @@ export default function Home() {
       <section className="w-full relative py-28 md:py-36 overflow-hidden">
         <Image
           src="/homepage/architectdesign.webp"
-          alt="건축 배경"
+          alt=""
           fill
           className="object-cover brightness-[0.25]"
         />

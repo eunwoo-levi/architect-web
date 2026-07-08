@@ -2,6 +2,8 @@
 
 import dynamic from "next/dynamic";
 import { NavermapsProvider } from "react-naver-maps";
+import { siteConfig } from "@/config/site";
+import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
 
 const Navermap = dynamic(() => import("@/components/map/Navermap"), {
   ssr: false,
@@ -37,12 +39,18 @@ const contactInfo = [
   },
 ];
 
+const breadcrumbJsonLd = buildBreadcrumbList([
+  { name: "홈", url: siteConfig.url },
+  { name: "연락처", url: `${siteConfig.url}/contact` },
+]);
+
 export default function ContactPage() {
   return (
     <NavermapsProvider
       ncpClientId={process.env.NEXT_PUBLIC_NAVERMAPS_CLIENT_ID || ""}
     >
       <main className="w-full bg-white">
+        <JsonLd id="ld-json-breadcrumb-contact" data={breadcrumbJsonLd} />
         {/* ── Page Header ── */}
         <section className="w-full bg-stone-900 py-20 md:py-24">
           <div className="max-w-screen-xl mx-auto px-6 md:px-10">
