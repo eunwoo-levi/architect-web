@@ -15,14 +15,19 @@ const Navermap = dynamic(() => import("@/components/map/Navermap"), {
 const contactInfo = [
   {
     label: "주소",
-    value: "대구광역시 수성구 국채보상로186길 79",
-    sub: "대구 수성구 범어동 136-8",
+    value: "대구광역시 수성구 범어로 192, 2층",
+    sub: "범어동",
     href: null,
   },
   {
     label: "전화",
     value: "053-716-7927",
     href: "tel:053-716-7927",
+  },
+  {
+    label: "휴대폰",
+    value: "010-6242-7927",
+    href: "tel:010-6242-7927",
   },
   {
     label: "팩스",
@@ -125,7 +130,7 @@ export default function ContactPage() {
                   <Navermap />
                 </div>
                 <p className="mt-3 text-stone-400 text-xs tracking-wide">
-                  대구광역시 수성구 국채보상로186길 79 (범어동 136-8)
+                  대구광역시 수성구 범어로 192, 2층(범어동)
                 </p>
               </FadeIn>
             </div>
@@ -139,11 +144,14 @@ export default function ContactPage() {
               <div className="text-stone-500 text-xs tracking-wide">
                 <span className="text-stone-300 font-medium">진성 건축사 사무소</span>
                 {" · "}
-                대구광역시 수성구 국채보상로186길 79
+                대구광역시 수성구 범어로 192, 2층(범어동)
               </div>
               <div className="flex items-center gap-6 text-stone-500 text-xs">
                 <a href="tel:053-716-7927" className="hover:text-accent-light transition-colors">
                   T. 053-716-7927
+                </a>
+                <a href="tel:010-6242-7927" className="hover:text-accent-light transition-colors">
+                  M. 010-6242-7927
                 </a>
                 <a href="mailto:nature0021@hanmail.net" className="hover:text-accent-light transition-colors">
                   nature0021@hanmail.net

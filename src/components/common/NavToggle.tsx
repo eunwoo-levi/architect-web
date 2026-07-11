@@ -51,7 +51,7 @@ export default function NavToggle() {
         </nav>
 
         <div className="px-8 mt-auto pb-12 text-stone-400 text-xs tracking-wider">
-          <p>대구광역시 수성구 국채보상로186길 79</p>
+          <p>대구광역시 수성구 범어로 192, 2층(범어동)</p>
           <p className="mt-1">053-716-7927</p>
         </div>
       </div>

@@ -50,9 +50,12 @@ export default function Footer() {
               Contact
             </h4>
             <div className="flex flex-col gap-2 text-stone-500 text-xs">
-              <p>대구광역시 수성구 국채보상로186길 79</p>
+              <p>대구광역시 수성구 범어로 192, 2층(범어동)</p>
               <a href="tel:053-716-7927" className="hover:text-accent-light transition-colors">
                 T. 053-716-7927
+              </a>
+              <a href="tel:010-6242-7927" className="hover:text-accent-light transition-colors">
+                M. 010-6242-7927
               </a>
               <a href="fax:053-326-6698" className="hover:text-accent-light transition-colors">
                 F. 053-326-6698
