@@ -1,20 +1,26 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Noto_Serif_KR } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
+import Footer from "@/components/common/Footer";
 import NaverMapsWrapper from "@/components/map/NaverMapsWrapper";
-import Link from "next/link";
 import Script from "next/script";
+import { MotionConfig } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
-const geistSans = localFont({
-  src: "../../public/fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const pretendard = localFont({
+  src: "../../node_modules/pretendard/dist/web/variable/woff2/PretendardVariable.woff2",
+  variable: "--font-pretendard",
+  weight: "45 920",
+  display: "swap",
 });
-const geistMono = localFont({
-  src: "../../public/fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const notoSerifKR = Noto_Serif_KR({
+  weight: ["500", "700"],
+  variable: "--font-noto-serif-kr",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -22,11 +28,10 @@ export const metadata: Metadata = {
     default: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
     template: "%s | 대구 진성 건축사 사무소",
   },
-  description:
-    "대구 수성구 진성 건축사 사무소. 20년 경력의 대구 건축사가 주거·상업·공공 건물 설계와 감리를 전문으로 합니다. 대구 건축사 사무소 상담 문의 053-716-7927.",
+  description: siteConfig.description,
   keywords:
     "대구 건축사, 대구 건축사 사무소, 대구 진성, 진성 건축사, 대구 건축설계, 대구 건축, 대구 감리, 대구 수성구 건축사, 건축사 사무소, 주택 설계, 상업 건물 설계, 리모델링",
-  metadataBase: new URL("https://www.daegu-jinsung.com"),
+  metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/",
   },
@@ -34,11 +39,11 @@ export const metadata: Metadata = {
     title: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
     description:
       "대구 수성구 20년 경력 진성 건축사 사무소. 주거·상업·공공 건물 설계 및 감리 전문. 053-716-7927",
-    url: "https://www.daegu-jinsung.com",
-    siteName: "대구 진성 건축사 사무소",
+    url: siteConfig.url,
+    siteName: siteConfig.nameWithLocale,
     images: [
       {
-        url: "https://www.daegu-jinsung.com/brand.webp",
+        url: siteConfig.defaultOgImage,
         width: 1200,
         height: 630,
         alt: "대구 진성 건축사 사무소 대표 이미지",
@@ -46,6 +51,13 @@ export const metadata: Metadata = {
     ],
     locale: "ko_KR",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "대구 진성 건축사 사무소 | 대구 건축설계 전문",
+    description:
+      "대구 수성구 20년 경력 진성 건축사 사무소. 주거·상업·공공 건물 설계 및 감리 전문. 053-716-7927",
+    images: [siteConfig.defaultOgImage],
   },
   robots: {
     index: true,
@@ -63,83 +75,51 @@ export const metadata: Metadata = {
   },
 };
 
-function Footer() {
-  return (
-    <footer className="w-full bg-stone-950 border-t border-stone-800">
-      <div className="max-w-screen-xl mx-auto px-6 md:px-10 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand */}
-          <div>
-            <div className="flex flex-col">
-              <span className="font-bold text-sm tracking-[0.18em] text-white uppercase">
-                진 성
-              </span>
-              <span className="text-[11px] tracking-[0.12em] text-stone-500 font-medium mt-0.5">
-                건축사 사무소
-              </span>
-            </div>
-            <p className="mt-4 text-stone-500 text-xs leading-relaxed max-w-xs">
-              20년의 경험으로 고객의 비전을 현실로 만드는<br />
-              종합 건축 설계 전문 사무소입니다.
-            </p>
-          </div>
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "ArchitectFirm"],
+  name: siteConfig.name,
+  alternateName: ["대구 진성 건축사 사무소", "대구 진성", "진성 건축사"],
+  description:
+    "대구 수성구 소재 진성 건축사 사무소. 20년 경력의 전문 건축사가 주거·상업·공공 건물 설계 및 감리 서비스를 제공합니다.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.street,
+    addressLocality: siteConfig.address.locality,
+    addressRegion: siteConfig.address.region,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: siteConfig.address.country,
+  },
+  url: siteConfig.url,
+  telephone: siteConfig.phoneIntl,
+  faxNumber: `+82-53-326-6698`,
+  email: siteConfig.email,
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.geo.lat,
+    longitude: siteConfig.geo.lng,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "09:00",
+    closes: "18:00",
+  },
+  priceRange: "$$",
+  areaServed: {
+    "@type": "City",
+    name: "대구광역시",
+  },
+  hasMap: `https://maps.google.com/?q=${siteConfig.geo.lat},${siteConfig.geo.lng}`,
+  sameAs: [siteConfig.url],
+};
 
-          {/* Navigation */}
-          <div>
-            <h4 className="text-[11px] tracking-[0.2em] text-stone-400 uppercase mb-4 font-medium">
-              Navigation
-            </h4>
-            <nav className="flex flex-col gap-2">
-              {[
-                { href: "/", label: "홈" },
-                { href: "/about", label: "회사소개" },
-                { href: "/projects", label: "프로젝트" },
-                { href: "/contact", label: "연락처" },
-              ].map(({ href, label }) => (
-                <Link
-                  key={href}
-                  href={href}
-                  className="text-stone-500 text-xs tracking-wide hover:text-accent-light transition-colors"
-                >
-                  {label}
-                </Link>
-              ))}
-            </nav>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="text-[11px] tracking-[0.2em] text-stone-400 uppercase mb-4 font-medium">
-              Contact
-            </h4>
-            <div className="flex flex-col gap-2 text-stone-500 text-xs">
-              <p>대구광역시 수성구 국채보상로186길 79</p>
-              <a href="tel:053-716-7927" className="hover:text-accent-light transition-colors">
-                T. 053-716-7927
-              </a>
-              <a href="fax:053-326-6698" className="hover:text-accent-light transition-colors">
-                F. 053-326-6698
-              </a>
-              <a href="mailto:nature0021@hanmail.net" className="hover:text-accent-light transition-colors">
-                nature0021@hanmail.net
-              </a>
-              <p className="mt-1 text-stone-600">월~금 09:00 – 18:00</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 pt-6 border-t border-stone-800 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-          <p className="text-stone-600 text-xs">
-            © {new Date().getFullYear()} 진성 건축사 사무소. All rights reserved.
-          </p>
-          <p className="text-stone-700 text-xs">
-            대한건축사협회 정회원
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: siteConfig.nameWithLocale,
+  url: siteConfig.url,
+};
 
 export default function RootLayout({
   children,
@@ -161,59 +141,29 @@ export default function RootLayout({
             gtag('config', 'G-9VP641HQHK');
           `}
         </Script>
+        <script
+          id="ld-json-localbusiness"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+        />
+        <script
+          id="ld-json-website"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
+        className={`${pretendard.variable} ${notoSerifKR.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": ["LocalBusiness", "ArchitectFirm"],
-            name: "진성 건축사 사무소",
-            alternateName: ["대구 진성 건축사 사무소", "대구 진성", "진성 건축사"],
-            description:
-              "대구 수성구 소재 진성 건축사 사무소. 20년 경력의 전문 건축사가 주거·상업·공공 건물 설계 및 감리 서비스를 제공합니다.",
-            address: {
-              "@type": "PostalAddress",
-              streetAddress: "국채보상로186길 79",
-              addressLocality: "대구광역시 수성구",
-              addressRegion: "대구",
-              postalCode: "42192",
-              addressCountry: "KR",
-            },
-            url: "https://www.daegu-jinsung.com",
-            telephone: "+82-53-716-7927",
-            faxNumber: "+82-53-326-6698",
-            email: "nature0021@hanmail.net",
-            geo: {
-              "@type": "GeoCoordinates",
-              latitude: 35.8662910116539,
-              longitude: 128.63429893576,
-            },
-            openingHoursSpecification: {
-              "@type": "OpeningHoursSpecification",
-              dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              opens: "09:00",
-              closes: "18:00",
-            },
-            priceRange: "$$",
-            areaServed: {
-              "@type": "City",
-              name: "대구광역시",
-            },
-            hasMap: "https://maps.google.com/?q=35.8662910116539,128.63429893576",
-            sameAs: [
-              "https://www.daegu-jinsung.com",
-            ],
-          })}
-        </script>
-        <NaverMapsWrapper>
-          <Navbar />
-          <div className="flex-1">
-            {children}
-          </div>
-          <Footer />
-        </NaverMapsWrapper>
+        <MotionConfig reducedMotion="user">
+          <NaverMapsWrapper>
+            <Navbar />
+            <div className="flex-1">
+              {children}
+            </div>
+            <Footer />
+          </NaverMapsWrapper>
+        </MotionConfig>
       </body>
     </html>
   );

@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
+import { useMotionValueEvent, useScroll } from "framer-motion";
 import NavToggle from "./NavToggle";
 
 const navLinks = [
@@ -9,8 +13,21 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setScrolled(latest > 8);
+  });
+
   return (
-    <nav className="sticky top-0 z-50 bg-white border-b border-stone-200 h-16">
+    <nav
+      className={`sticky top-0 z-50 h-16 border-b transition-colors duration-300 ${
+        scrolled
+          ? "bg-white/90 backdrop-blur-md border-stone-200 shadow-sm"
+          : "bg-white border-stone-200"
+      }`}
+    >
       <div className="max-w-screen-xl mx-auto h-full px-6 md:px-10 flex items-center justify-between">
         {/* Logo */}
         <Link
@@ -26,7 +43,7 @@ export default function Navbar() {
             />
           </div>
           <span className="flex flex-col leading-tight">
-            <span className="font-bold text-sm tracking-[0.18em] text-stone-900 group-hover:text-accent transition-colors">
+            <span className="font-serif font-bold text-sm tracking-[0.18em] text-stone-900 group-hover:text-accent transition-colors">
               진 성
             </span>
             <span className="text-[11px] tracking-[0.12em] text-stone-500 font-medium">

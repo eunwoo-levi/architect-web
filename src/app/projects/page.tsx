@@ -1,39 +1,56 @@
 import type { Metadata } from "next";
-import ProjectLink from "./_components/ProjectLink";
+import ProjectCard from "@/components/common/ProjectCard";
 import { data } from "./data";
+import { siteConfig } from "@/config/site";
+import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
+import SectionHeading from "@/components/ui/SectionHeading";
+import Button from "@/components/ui/Button";
+import FadeIn from "@/components/motion/FadeIn";
+import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
+
+const description =
+  "대구 진성 건축사 사무소의 프로젝트 포트폴리오. 교육 시설, 의료 시설, 상업 시설, 공공 시설 등 대구 지역 다수의 건축 설계 프로젝트를 확인하세요.";
 
 export const metadata: Metadata = {
   title: "포트폴리오",
-  description:
-    "대구 진성 건축사 사무소의 프로젝트 포트폴리오. 교육 시설, 의료 시설, 상업 시설, 공공 시설 등 대구 지역 다수의 건축 설계 프로젝트를 확인하세요.",
+  description,
   alternates: {
     canonical: "/projects",
   },
+  openGraph: {
+    title: "포트폴리오 | 대구 진성 건축사 사무소",
+    description,
+    url: `${siteConfig.url}/projects`,
+    images: [{ url: data[0].imageUrl, alt: "대구 진성 건축사 사무소 프로젝트" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "포트폴리오 | 대구 진성 건축사 사무소",
+    description,
+    images: [data[0].imageUrl],
+  },
 };
 
-interface ProjectProps {
-  title: string;
-  imageUrl: string;
-  category?: string;
-}
+const breadcrumbJsonLd = buildBreadcrumbList([
+  { name: "홈", url: siteConfig.url },
+  { name: "프로젝트", url: `${siteConfig.url}/projects` },
+]);
 
 export default function ProjectPage() {
   return (
     <main className="w-full bg-white">
+      <JsonLd id="ld-json-breadcrumb-projects" data={breadcrumbJsonLd} />
       {/* ── Page Header ── */}
       <section className="w-full bg-stone-900 py-20 md:py-24">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10">
-          <span className="text-[11px] tracking-[0.28em] text-accent-light font-medium uppercase">
-            Portfolio
-          </span>
-          <h1 className="mt-4 text-4xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-            프로젝트
-          </h1>
-          <div className="mt-5 w-12 h-px bg-accent" />
-          <p className="mt-5 text-stone-400 text-sm md:text-base max-w-lg leading-relaxed">
-            20년간의 다양한 프로젝트 경험을 바탕으로 최적의 건축 설계를 제공합니다.
-            교육, 복지, 상업, 공공 시설 등 다양한 유형의 건축물을 설계하였습니다.
-          </p>
+          <FadeIn>
+            <SectionHeading
+              eyebrow="Portfolio"
+              title="프로젝트"
+              tone="dark"
+              description="20년간의 다양한 프로젝트 경험을 바탕으로 최적의 건축 설계를 제공합니다. 교육, 복지, 상업, 공공 시설 등 다양한 유형의 건축물을 설계하였습니다."
+            />
+          </FadeIn>
         </div>
       </section>
 
@@ -59,16 +76,18 @@ export default function ProjectPage() {
       {/* ── Projects Grid ── */}
       <section className="w-full py-16 md:py-20">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200">
-            {data.map((project: ProjectProps) => (
-              <ProjectLink
-                key={project.title}
-                title={project.title}
-                imageUrl={project.imageUrl}
-                category={project.category}
-              />
+          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200">
+            {data.map((project) => (
+              <StaggerItem key={project.slug}>
+                <ProjectCard
+                  title={project.title}
+                  slug={project.slug}
+                  imageUrl={project.imageUrl}
+                  category={project.category}
+                />
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -76,19 +95,16 @@ export default function ProjectPage() {
       <section className="w-full border-t border-stone-200 py-16">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
           <div>
-            <h2 className="text-xl md:text-2xl font-bold text-stone-900 tracking-tight">
+            <h2 className="font-serif text-xl md:text-2xl font-bold text-stone-900 tracking-tight">
               새 프로젝트를 준비 중이신가요?
             </h2>
             <p className="mt-2 text-stone-500 text-sm">
               진성 건축사 사무소와 함께 당신의 비전을 실현하세요.
             </p>
           </div>
-          <a
-            href="/contact"
-            className="shrink-0 text-sm tracking-widest bg-stone-900 text-white px-10 py-4 hover:bg-accent transition-colors duration-300 font-medium text-center"
-          >
+          <Button href="/contact" variant="solid-dark" className="shrink-0">
             상담 문의하기
-          </a>
+          </Button>
         </div>
       </section>
     </main>

@@ -1,36 +1,41 @@
 import { MetadataRoute } from 'next'
+import { siteConfig } from '@/config/site'
+import { data } from './projects/data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
-      url: 'https://www.daegu-jinsung.com',
+      url: siteConfig.url,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 1,
     },
     {
-      url: 'https://www.daegu-jinsung.com/about',
+      url: `${siteConfig.url}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.9,
     },
     {
-      url: 'https://www.daegu-jinsung.com/projects',
+      url: `${siteConfig.url}/projects`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,
     },
     {
-      url: 'https://www.daegu-jinsung.com/contact',
+      url: `${siteConfig.url}/contact`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.7,
     },
-    {
-      url: 'https://www.daegu-jinsung.com/board',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.6,
-    },
   ]
+
+  const projectRoutes: MetadataRoute.Sitemap = data.map((project) => ({
+    url: `${siteConfig.url}/projects/${project.slug}`,
+    lastModified: project.updatedAt,
+    changeFrequency: 'yearly',
+    priority: 0.6,
+  }))
+
+  return [...staticRoutes, ...projectRoutes]
 }

@@ -1,16 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface ProjectProps {
+interface ProjectCardProps {
   title: string;
+  slug: string;
   imageUrl: string;
   category?: string;
 }
 
-export default function ProjectLink({ title, imageUrl, category }: ProjectProps) {
+export default function ProjectCard({ title, slug, imageUrl, category }: ProjectCardProps) {
   return (
     <Link
-      href={`/projects/${encodeURIComponent(title)}`}
+      href={`/projects/${slug}`}
       className="group relative block overflow-hidden bg-stone-100"
     >
       <div className="relative aspect-[4/3]">
