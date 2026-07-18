@@ -66,6 +66,7 @@ export default function ContactPage() {
               <SectionHeading
                 eyebrow="Contact"
                 title="연락처"
+                as="h1"
                 tone="dark"
                 description="궁금하신 사항이나 프로젝트 문의가 있으시면 언제든지 연락 주세요. 성실하게 답변드리겠습니다."
               />

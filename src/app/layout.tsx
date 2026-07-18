@@ -43,8 +43,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: siteConfig.defaultOgImage,
-        width: 1200,
-        height: 630,
+        width: 1024,
+        height: 585,
         alt: "대구 진성 건축사 사무소 대표 이미지",
       },
     ],
@@ -81,6 +81,11 @@ const localBusinessJsonLd = {
   alternateName: ["대구 진성 건축사 사무소", "대구 진성", "진성 건축사"],
   description:
     "대구 수성구 소재 진성 건축사 사무소. 20년 경력의 전문 건축사가 주거·상업·공공 건물 설계 및 감리 서비스를 제공합니다.",
+  image: [
+    `${siteConfig.url}${siteConfig.defaultOgImage}`,
+    `${siteConfig.url}/brand.webp`,
+  ],
+  logo: `${siteConfig.url}/brand.webp`,
   address: {
     "@type": "PostalAddress",
     streetAddress: siteConfig.address.street,

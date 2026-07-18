@@ -46,6 +46,7 @@ export default function ProjectPage() {
             <SectionHeading
               eyebrow="Portfolio"
               title="프로젝트"
+              as="h1"
               tone="dark"
               description="20년간의 다양한 프로젝트 경험을 바탕으로 최적의 건축 설계를 제공합니다. 교육, 복지, 상업, 공공 시설 등 다양한 유형의 건축물을 설계하였습니다."
             />

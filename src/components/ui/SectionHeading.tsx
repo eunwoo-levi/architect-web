@@ -8,6 +8,7 @@ interface SectionHeadingProps {
   align?: "left" | "center";
   divider?: "line" | "ornament";
   size?: "md" | "lg";
+  as?: "h1" | "h2";
   className?: string;
 }
 
@@ -19,15 +20,15 @@ export default function SectionHeading({
   align = "left",
   divider = "line",
   size = "lg",
+  as: HeadingTag = "h2",
   className = "",
 }: SectionHeadingProps) {
   const eyebrowColor = tone === "dark" ? "text-accent-light" : "text-accent";
   const titleColor = tone === "dark" ? "text-white" : "text-stone-900";
-  const descriptionColor = tone === "dark" ? "text-stone-400" : "text-stone-500";
+  const descriptionColor =
+    tone === "dark" ? "text-stone-400" : "text-stone-500";
   const titleSize =
-    size === "lg"
-      ? "text-3xl md:text-4xl lg:text-5xl"
-      : "text-3xl md:text-4xl";
+    size === "lg" ? "text-3xl md:text-4xl lg:text-5xl" : "text-3xl md:text-4xl";
   const alignClass = align === "center" ? "text-center" : "text-left";
 
   return (
@@ -37,11 +38,11 @@ export default function SectionHeading({
       >
         {eyebrow}
       </span>
-      <h2
+      <HeadingTag
         className={`mt-4 font-serif font-bold leading-tight tracking-tight ${titleSize} ${titleColor}`}
       >
         {title}
-      </h2>
+      </HeadingTag>
 
       {divider === "line" ? (
         <div
