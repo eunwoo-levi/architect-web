@@ -4,7 +4,6 @@ import { Noto_Serif_KR } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/common/Navbar";
 import Footer from "@/components/common/Footer";
-import NaverMapsWrapper from "@/components/map/NaverMapsWrapper";
 import Script from "next/script";
 import { MotionConfig } from "framer-motion";
 import { siteConfig } from "@/config/site";
@@ -156,13 +155,11 @@ export default function RootLayout({
         className={`${pretendard.variable} ${notoSerifKR.variable} font-sans antialiased min-h-screen flex flex-col`}
       >
         <MotionConfig reducedMotion="user">
-          <NaverMapsWrapper>
-            <Navbar />
-            <div className="flex-1">
-              {children}
-            </div>
-            <Footer />
-          </NaverMapsWrapper>
+          <Navbar />
+          <div className="flex-1">
+            {children}
+          </div>
+          <Footer />
         </MotionConfig>
       </body>
     </html>

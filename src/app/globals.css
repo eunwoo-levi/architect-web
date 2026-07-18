@@ -5,8 +5,6 @@
 :root {
   --background: #ffffff;
   --foreground: #1C1917;
-  --accent: #8B7355;
-  --accent-light: #C5A87D;
 }
 
 @layer base {
@@ -16,20 +14,6 @@
 
   body {
     @apply text-stone-900 antialiased bg-white;
-  }
-}
-
-@layer utilities {
-  .text-accent {
-    color: var(--accent);
-  }
-
-  .bg-accent {
-    background-color: var(--accent);
-  }
-
-  .border-accent {
-    border-color: var(--accent);
   }
 }
 
