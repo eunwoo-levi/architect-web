@@ -7,9 +7,9 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 import NavToggle from "./NavToggle";
 
 const navLinks = [
+  { href: "/", label: "홈" },
   { href: "/about", label: "회사소개" },
   { href: "/projects", label: "프로젝트" },
-  { href: "/contact", label: "연락처" },
 ];
 
 export default function Navbar() {
