@@ -59,9 +59,11 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 const metaFields = (project: NonNullable<ReturnType<typeof getProject>>) =>
   [
     { label: "위치", value: project.location },
-    { label: "면적", value: project.area },
-    { label: "준공", value: project.year },
     { label: "분야", value: project.category },
+    { label: "면적", value: project.area },
+    { label: "구조", value: project.structure },
+    { label: "업무범위", value: project.scope },
+    { label: "준공", value: project.year },
   ].filter((field): field is { label: string; value: string } => Boolean(field.value));
 
 export default async function ProjectDetailPage({ params }: Params) {
@@ -160,20 +162,33 @@ export default async function ProjectDetailPage({ params }: Params) {
               </p>
 
               {gallery.length > 0 && (
-                <StaggerGroup className="mt-10 grid grid-cols-2 gap-px bg-stone-200">
-                  {gallery.map((src, index) => (
-                    <StaggerItem key={src + index}>
-                      <div className="relative aspect-[4/3] bg-stone-100">
-                        <Image
-                          src={src}
-                          alt={`${project.title} 이미지 ${index + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                    </StaggerItem>
-                  ))}
-                </StaggerGroup>
+                <div className="mt-12">
+                  <div className="flex items-center gap-4 pb-6 border-b border-stone-200">
+                    <div className="w-10 h-px bg-accent" />
+                    <span className="text-xs tracking-[0.2em] text-stone-400 uppercase">
+                      Gallery &amp; Drawings
+                    </span>
+                  </div>
+                  <StaggerGroup
+                    className={`mt-8 grid gap-4 ${
+                      gallery.length === 1 ? "grid-cols-1" : "grid-cols-1 sm:grid-cols-2"
+                    }`}
+                  >
+                    {gallery.map((src, index) => (
+                      <StaggerItem key={src + index}>
+                        <div className="relative aspect-[4/3] bg-stone-50 border border-stone-200 overflow-hidden">
+                          <Image
+                            src={src}
+                            alt={`${project.title} 관련 자료 ${index + 1}`}
+                            fill
+                            sizes="(max-width: 640px) 100vw, 50vw"
+                            className="object-contain"
+                          />
+                        </div>
+                      </StaggerItem>
+                    ))}
+                  </StaggerGroup>
+                </div>
               )}
             </FadeIn>
 

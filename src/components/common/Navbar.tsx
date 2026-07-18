@@ -34,7 +34,7 @@ export default function Navbar() {
           href="/"
           className="flex items-center gap-3 group"
         >
-          <div className="relative w-10 h-10 shrink-0">
+          <div className="relative w-14 h-14 shrink-0">
             <Image
               fill
               src="/brand.webp"
@@ -43,10 +43,10 @@ export default function Navbar() {
             />
           </div>
           <span className="flex flex-col leading-tight">
-            <span className="font-serif font-bold text-sm tracking-[0.18em] text-stone-900 group-hover:text-accent transition-colors">
+            <span className="font-serif font-bold text-lg tracking-[0.18em] text-stone-900 group-hover:text-accent transition-colors">
               진 성
             </span>
-            <span className="text-[11px] tracking-[0.12em] text-stone-500 font-medium">
+            <span className="text-sm tracking-[0.12em] text-stone-900 font-medium">
               건축사 사무소
             </span>
           </span>

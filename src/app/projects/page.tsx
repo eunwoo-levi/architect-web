@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import ProjectCard from "@/components/common/ProjectCard";
-import { data } from "./data";
+import { data, categories } from "./data";
 import { siteConfig } from "@/config/site";
 import JsonLd, { buildBreadcrumbList } from "@/components/JsonLd";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Button from "@/components/ui/Button";
 import FadeIn from "@/components/motion/FadeIn";
-import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
+import ProjectsGallery from "./_components/ProjectsGallery";
 
 const description =
   "대구 진성 건축사 사무소의 프로젝트 포트폴리오. 교육 시설, 의료 시설, 상업 시설, 공공 시설 등 대구 지역 다수의 건축 설계 프로젝트를 확인하세요.";
@@ -59,9 +58,9 @@ export default function ProjectPage() {
         <div className="max-w-screen-xl mx-auto px-6 md:px-10">
           <div className="flex flex-wrap items-center gap-8 md:gap-16">
             {[
-              { val: data.length.toString(), label: "완료 프로젝트" },
+              { val: `${data.length}+`, label: "완료 프로젝트" },
               { val: "20+", label: "년 경력" },
-              { val: "5", label: "설계 분야" },
+              { val: categories.length.toString(), label: "설계 분야" },
               { val: "대구·경북", label: "주요 지역" },
             ].map((stat) => (
               <div key={stat.label} className="flex items-baseline gap-2">
@@ -73,21 +72,10 @@ export default function ProjectPage() {
         </div>
       </section>
 
-      {/* ── Projects Grid ── */}
+      {/* ── Projects Grid (filterable) ── */}
       <section className="w-full py-16 md:py-20">
         <div className="max-w-screen-xl mx-auto px-6 md:px-10">
-          <StaggerGroup className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-stone-200">
-            {data.map((project) => (
-              <StaggerItem key={project.slug}>
-                <ProjectCard
-                  title={project.title}
-                  slug={project.slug}
-                  imageUrl={project.imageUrl}
-                  category={project.category}
-                />
-              </StaggerItem>
-            ))}
-          </StaggerGroup>
+          <ProjectsGallery projects={data} categories={categories} />
         </div>
       </section>
 

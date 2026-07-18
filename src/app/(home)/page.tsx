@@ -52,7 +52,10 @@ const stats = [
   },
 ];
 
-const featuredProjects = projectData.slice(0, 3);
+const featuredSlugs = ["daegu-lions-park", "daegu-siji-middle", "buknae-lfirst-apartel"];
+const featuredProjects = featuredSlugs
+  .map((slug) => projectData.find((p) => p.slug === slug))
+  .filter((p): p is (typeof projectData)[number] => Boolean(p));
 
 export default function Home() {
   return (
@@ -120,13 +123,15 @@ export default function Home() {
 
           {/* Project grid preview */}
           <StaggerGroup className="grid grid-cols-1 md:grid-cols-3 gap-px bg-stone-200">
-            {featuredProjects.map((project) => (
+            {featuredProjects.map((project, i) => (
               <StaggerItem key={project.slug}>
                 <ProjectCard
                   title={project.title}
                   slug={project.slug}
                   imageUrl={project.imageUrl}
                   category={project.category}
+                  location={project.location}
+                  priority={i < 3}
                 />
               </StaggerItem>
             ))}
