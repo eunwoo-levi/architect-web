@@ -63,7 +63,7 @@ export default function Home() {
       {/* ── Hero Slider ── */}
       <section className="w-full h-[calc(100vh-4rem)]">
         <h1 className="sr-only">
-          대구 건축사 사무소 | 진성 건축사 사무소 – 주거·상업·공공 건축 설계 및 감리
+          대구 건축사 사무소 진성 – 대구 건축설계, 해체계획서 작성, 용도변경, 건축감리 전문
         </h1>
         <AutoPlaySlider />
       </section>

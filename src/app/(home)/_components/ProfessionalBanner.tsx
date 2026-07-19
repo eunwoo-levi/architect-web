@@ -1,8 +1,7 @@
 import React from "react";
-import { LuBuilding2, LuClipboardCheck, LuSchool, LuBox, LuTrophy } from "react-icons/lu";
+import { LuBuilding2, LuClipboardCheck, LuSchool, LuBox, LuRepeat, LuTrophy } from "react-icons/lu";
 import { FaHelmetSafety } from "react-icons/fa6";
 import { SlBadge } from "react-icons/sl";
-import { IoMdTime } from "react-icons/io";
 import SectionHeading from "@/components/ui/SectionHeading";
 import ServiceGrid from "@/components/ui/ServiceGrid";
 import { ServiceCardProps } from "@/components/ui/ServiceCard";
@@ -12,17 +11,22 @@ const services: ServiceCardProps[] = [
   {
     icon: LuBuilding2,
     title: "건축설계",
-    description: "주거·상업·공공건물 등 다양한 유형의 종합 건축 설계 서비스",
-  },
-  {
-    icon: FaHelmetSafety,
-    title: "건축 감리",
-    description: "현장 감리 및 공사 감리, 석면해체공사 감리 전문 서비스",
+    description: "주거·상업·공공건물 등 다양한 유형의 종합 건축설계 서비스",
   },
   {
     icon: LuClipboardCheck,
     title: "해체계획서 작성",
-    description: "안전을 최우선으로 하는 건축물 해체계획서 작성 및 관리",
+    description: "안전을 최우선으로 하는 건축물 해체계획서 작성 및 석면해체 감리",
+  },
+  {
+    icon: LuRepeat,
+    title: "용도변경",
+    description: "건축물 용도변경 인허가 및 설계 대행 전문 서비스",
+  },
+  {
+    icon: FaHelmetSafety,
+    title: "건축감리",
+    description: "현장 감리 및 공사 감리, 건축물 정기점검 전문 서비스",
   },
   {
     icon: LuSchool,
@@ -42,12 +46,7 @@ const services: ServiceCardProps[] = [
   {
     icon: SlBadge,
     title: "전문 자격",
-    description: "대한건축사협회 정회원, 검증된 전문 자격 보유",
-  },
-  {
-    icon: IoMdTime,
-    title: "20년 이상 경력",
-    description: "다양한 프로젝트 수행으로 축적된 풍부한 경험과 노하우",
+    description: "20년 경력의 대한건축사협회 정회원, 검증된 전문 자격 보유",
   },
 ];
 
@@ -63,8 +62,8 @@ const ProfessionalBanner: React.FC = () => {
             divider="ornament"
             description={
               <>
-                20년간 쌓아온 건축 노하우를 바탕으로<br />
-                고객의 비전에 최적화된 종합 건축 서비스를 제공합니다
+                대구 건축설계부터 해체계획서 작성, 용도변경, 건축감리까지<br />
+                20년 경력의 노하우로 종합 건축 서비스를 제공합니다
               </>
             }
           />

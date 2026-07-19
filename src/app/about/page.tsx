@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { LuBuilding2, LuClipboardCheck, LuSchool } from "react-icons/lu";
+import { LuBuilding2, LuRepeat, LuSchool } from "react-icons/lu";
 import { FaHelmetSafety } from "react-icons/fa6";
 import { BsBuildingCheck } from "react-icons/bs";
 import { MdFactCheck } from "react-icons/md";
@@ -15,7 +15,7 @@ import FadeIn from "@/components/motion/FadeIn";
 import { StaggerGroup, StaggerItem } from "@/components/motion/Stagger";
 
 const description =
-  "대구 수성구 진성 건축사 사무소 소개. 20년 경력의 전문 건축사가 운영하는 대구 건축사 사무소로, 건축 설계·감리·인허가 서비스를 제공합니다.";
+  "대구 수성구 진성 건축사 사무소 소개. 20년 경력의 전문 건축사가 운영하는 대구 건축사 사무소로, 대구 건축설계, 해체계획서 작성, 용도변경, 건축감리 서비스를 제공합니다.";
 
 export const metadata: Metadata = {
   title: "회사소개",
@@ -51,13 +51,18 @@ interface ServiceItem {
 const services: ServiceItem[] = [
   {
     icon: LuBuilding2,
-    title: "종합 건축 설계",
+    title: "종합 건축설계",
     description: "주거시설, 교육·연구 및 복지시설, 근린생활시설 등 다양한 유형의 건축물 설계",
   },
   {
-    icon: LuSchool,
-    title: "공간 혁신 사업",
-    description: "기존 공간의 가치를 재발견하고 극대화하는 혁신적 접근으로 학교공간혁신 전문",
+    icon: MdFactCheck,
+    title: "건축물 해체계획서 작성",
+    description: "안전을 최우선으로 하는 건축물 해체계획서 작성 및 석면해체공사 감리",
+  },
+  {
+    icon: LuRepeat,
+    title: "건축물 용도변경",
+    description: "근린생활시설·주택 등 건축물 용도변경 인허가 및 설계 대행 서비스",
   },
   {
     icon: FaHelmetSafety,
@@ -65,19 +70,14 @@ const services: ServiceItem[] = [
     description: "설계의 완벽한 구현을 위한 현장 감리 및 공사 감리 전문 서비스",
   },
   {
-    icon: MdFactCheck,
-    title: "건축물 해체계획서",
-    description: "안전을 최우선으로 하는 건축물 해체계획서 작성 및 석면해체공사 감리",
+    icon: LuSchool,
+    title: "공간 혁신 사업",
+    description: "기존 공간의 가치를 재발견하고 극대화하는 혁신적 접근으로 학교공간혁신 전문",
   },
   {
     icon: BsBuildingCheck,
     title: "건축물 정기점검",
     description: "체계적인 정기점검으로 건축물의 안전성 및 기능성 유지 관리",
-  },
-  {
-    icon: LuClipboardCheck,
-    title: "석면해체공사 감리",
-    description: "석면 해체·제거 공사의 안전하고 전문적인 감리 서비스 제공",
   },
 ];
 

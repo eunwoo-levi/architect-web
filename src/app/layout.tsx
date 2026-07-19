@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   keywords:
-    "대구 건축사, 대구 건축사 사무소, 대구 진성, 진성 건축사, 대구 건축설계, 대구 건축, 대구 감리, 대구 수성구 건축사, 건축사 사무소, 주택 설계, 상업 건물 설계, 리모델링",
+    "대구 건축설계, 대구건축설계, 대구 해체계획서 작성, 대구해체계획서작성, 대구 용도변경, 대구용도변경, 대구 건축감리, 대구건축감리, 학교공간혁신, 대구 학교공간혁신, 대구 건축사, 대구 건축사 사무소, 대구 진성, 진성 건축사, 대구 수성구 건축사, 건축사 사무소, 건축물 해체계획서, 석면해체 감리, 주택 설계, 상업 건물 설계, 공공건축 설계, 리모델링",
   metadataBase: new URL(siteConfig.url),
   alternates: {
     canonical: "/",
@@ -80,7 +80,15 @@ const localBusinessJsonLd = {
   name: siteConfig.name,
   alternateName: ["대구 진성 건축사 사무소", "대구 진성", "진성 건축사"],
   description:
-    "대구 수성구 소재 진성 건축사 사무소. 20년 경력의 전문 건축사가 주거·상업·공공 건물 설계 및 감리 서비스를 제공합니다.",
+    "대구 수성구 소재 진성 건축사 사무소. 20년 경력의 전문 건축사가 대구 건축설계, 건축물 해체계획서 작성, 용도변경, 건축감리 서비스를 제공합니다.",
+  knowsAbout: [
+    "대구 건축설계",
+    "건축물 해체계획서 작성",
+    "용도변경",
+    "건축감리",
+    "석면해체공사 감리",
+    "학교공간혁신 설계",
+  ],
   image: [
     `${siteConfig.url}${siteConfig.defaultOgImage}`,
     `${siteConfig.url}/brand.webp`,
@@ -116,6 +124,62 @@ const localBusinessJsonLd = {
   },
   hasMap: `https://maps.google.com/?q=${siteConfig.geo.lat},${siteConfig.geo.lng}`,
   sameAs: [siteConfig.url],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "건축사 사무소 전문 서비스",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "대구 건축설계",
+          description:
+            "주거·상업·공공 건물 등 다양한 유형의 종합 건축설계 서비스",
+          areaServed: "대구광역시",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "대구 해체계획서 작성",
+          description:
+            "건축물 해체계획서 작성 및 석면해체공사 감리",
+          areaServed: "대구광역시",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "대구 용도변경",
+          description:
+            "건축물 용도변경 인허가 및 설계 대행 서비스",
+          areaServed: "대구광역시",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "대구 건축감리",
+          description:
+            "현장 감리 및 공사 감리, 건축물 정기점검 전문 서비스",
+          areaServed: "대구광역시",
+        },
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "학교공간혁신 설계",
+          description:
+            "대구·경북 교육청 학교공간혁신 사업 전문, 학습 환경 혁신 설계",
+          areaServed: "대구광역시",
+        },
+      },
+    ],
+  },
 };
 
 const websiteJsonLd = {
